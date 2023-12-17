@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Customer Attributes Base for Magento 2
+ */-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="customer_eav_attribute" resource="default">
+    <column xsi:type="smallint" name="used_in_product_listing" padding="5" unsigned="true" nullable="false" identity="false" comment="Is Used In Product Listing"/>
+    <column xsi:type="varchar" name="store_ids" nullable="false" length="255" comment="Store Ids"/>
+    <column xsi:type="smallint" name="sorting_order" padding="5" unsigned="true" nullable="false" identity="false" comment="Sorting Order"/>
+    <column xsi:type="smallint" name="is_visible_on_front" padding="5" unsigned="true" nullable="false" identity="false" comment="Is Visible On Front"/>
+    <column xsi:type="varchar" name="type_internal" nullable="false" length="255" comment="Type Internal"/>
+    <column xsi:type="smallint" name="on_order_view" padding="5" unsigned="true" nullable="false" identity="false" comment="On Order View"/>
+    <column xsi:type="smallint" name="on_registration" padding="5" unsigned="true" nullable="false" identity="false" comment="On Registration"/>
+    <column xsi:type="smallint" name="is_read_only" padding="5" unsigned="true" nullable="false" identity="false" comment="Is Read Only"/>
+    <column xsi:type="smallint" name="used_in_order_grid" padding="5" unsigned="true" nullable="false" identity="false" comment="Used In Order Grid"/>
+    <column xsi:type="smallint" name="file_size" padding="5" unsigned="true" nullable="false" identity="false" comment="File Size"/>
+    <column xsi:type="varchar" name="file_types" nullable="false" length="255" comment="File Types"/>
+    <column xsi:type="varchar" name="file_dimensions" nullable="false" length="255" comment="File Dimensions"/>
+    <column xsi:type="smallint" name="account_filled" padding="5" unsigned="true" nullable="false" identity="false" comment="Account Filled"/>
+    <column xsi:type="smallint" name="billing_filled" padding="5" unsigned="true" nullable="false" identity="false" comment="Billing Filled"/>
+    <column xsi:type="smallint" name="required_on_front" padding="5" unsigned="true" nullable="false" identity="false" comment="Required On Front"/>
+  </table>
+  <table name="eav_attribute_option" resource="default">
+    <column xsi:type="int" name="group_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Group Id"/>
+  </table>
+  <table name="amasty_customer_attributes_relation" resource="default" engine="innodb" comment="Amasty Customer Attributes Relation">
+    <column xsi:type="int" name="relation_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Relation Id"/>
+    <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Name"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="relation_id"/>
+    </constraint>
+  </table>
+  <table name="amasty_customer_attributes_details" resource="default" engine="innodb" comment="Amasty Customer Attributes Relation Details">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Details Id"/>
+    <column xsi:type="smallint" name="attribute_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Attribute Id"/>
+    <column xsi:type="int" name="option_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Option Id"/>
+    <column xsi:type="smallint" name="dependent_attribute_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Dependent Attribute Id"/>
+    <column xsi:type="int" name="relation_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Relation Id"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="AMASTY_CSTR_ATTRS_DETAILS_ATTR_ID_EAV_ATTR_OPT_ATTR_ID" table="amasty_customer_attributes_details" column="attribute_id" referenceTable="eav_attribute_option" referenceColumn="attribute_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="FK_7F74A62983B1B91A9F65856378FE7FB0" table="amasty_customer_attributes_details" column="dependent_attribute_id" referenceTable="eav_attribute" referenceColumn="attribute_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="FK_35975A118CFE43ECDCEB1BE38F6981C1" table="amasty_customer_attributes_details" column="relation_id" referenceTable="amasty_customer_attributes_relation" referenceColumn="relation_id" onDelete="CASCADE"/>
+    <index referenceId="AMASTY_CUSTOMER_ATTRIBUTES_DETAILS_ATTRIBUTE_ID" indexType="btree">
+      <column name="attribute_id"/>
+    </index>
+    <index referenceId="AMASTY_CUSTOMER_ATTRIBUTES_DETAILS_DEPENDENT_ATTRIBUTE_ID" indexType="btree">
+      <column name="dependent_attribute_id"/>
+    </index>
+    <index referenceId="AMASTY_CUSTOMER_ATTRIBUTES_DETAILS_RELATION_ID" indexType="btree">
+      <column name="relation_id"/>
+    </index>
+  </table>
+  <table name="amasty_customer_attributes_guest" resource="default" engine="innodb" comment="Amasty Customer Attributes Guest">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="int" name="order_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Order Id"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+    <index referenceId="AMASTY_CUSTOMER_ATTRIBUTES_GUEST_ORDER_ID" indexType="btree">
+      <column name="order_id"/>
+    </index>
+  </table>
+  <table name="amasty_customer_attributes_relation_grid" resource="default" engine="innodb" comment="Relation Flat Grid">
+    <column xsi:type="int" name="relation_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Relation Id"/>
+    <column xsi:type="varchar" name="relation_name" nullable="true" length="255" comment="Relation Name"/>
+    <column xsi:type="varchar" name="parent_attribute" nullable="true" length="255" comment="Parent Attribute"/>
+    <column xsi:type="varchar" name="dependent_attribute" nullable="true" length="255" comment="Dependent Attributes"/>
+    <column xsi:type="varchar" name="attribute_codes" nullable="true" length="255" comment="Attribute Codes"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="relation_id"/>
+    </constraint>
+  </table>
+   <table name="amasty_customer_attributes_quote_address" resource="default" engine="innodb" comment="Amasty Customer Attributes Quote Address">
+     <column xsi:type="int" name="row_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Row Id"/>
+     <column xsi:type="int" name="address_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Address Id"/>
+     <column xsi:type="mediumtext" name="serialized_data" nullable="true" comment="Serialized Data"/>
+     <constraint xsi:type="primary" referenceId="PRIMARY">
+       <column name="row_id"/>
+     </constraint>
+     <constraint xsi:type="foreign"
+                 referenceId="AMASTY_CSTR_CUSTOMER_ATTRIBUTES_QUOTE_ADDRESS_ADDRESS_ID"
+                 table="amasty_customer_attributes_quote_address"
+                 column="address_id"
+                 referenceTable="quote_address"
+                 referenceColumn="address_id"
+                 onDelete="CASCADE"/>
+   </table>
+</schema>

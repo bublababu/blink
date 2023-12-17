@@ -1,0 +1,14 @@
+{
+    "amasty_stripe_customers": {
+        "column": {
+            "entity_id": true,
+            "customer_id": true,
+            "stripe_customer_id": true,
+            "stripe_account_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "AMASTY_STRIPE_CSTRS_CSTR_ID_CSTR_ENTT_ENTT_ID": true
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "name": "prince/module-base",
+    "description": "Mageprince base module for Magento 2",
+    "type": "magento2-module",
+    "version": "1.0.3",
+    "license": [
+        "Commercial"
+    ],
+    "authors": [
+        {
+          "name": "Mageprince",
+          "email": "contact@mageprince.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mageprince\\Base\\": ""
+        }
+    }
+}

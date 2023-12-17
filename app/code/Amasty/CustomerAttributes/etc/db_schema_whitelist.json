@@ -1,0 +1,79 @@
+{
+    "customer_eav_attribute": {
+        "column": {
+            "used_in_product_listing": true,
+            "store_ids": true,
+            "sorting_order": true,
+            "is_visible_on_front": true,
+            "type_internal": true,
+            "on_order_view": true,
+            "on_registration": true,
+            "is_read_only": true,
+            "used_in_order_grid": true,
+            "file_size": true,
+            "file_types": true,
+            "file_dimensions": true,
+            "account_filled": true,
+            "billing_filled": true,
+            "required_on_front": true
+        }
+    },
+    "eav_attribute_option": {
+        "column": {
+            "group_id": true
+        }
+    },
+    "amasty_customer_attributes_relation": {
+        "column": {
+            "relation_id": true,
+            "name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "amasty_customer_attributes_details": {
+        "column": {
+            "id": true,
+            "attribute_id": true,
+            "option_id": true,
+            "dependent_attribute_id": true,
+            "relation_id": true
+        },
+        "index": {
+            "AMASTY_CUSTOMER_ATTRIBUTES_DETAILS_ATTRIBUTE_ID": true,
+            "AMASTY_CUSTOMER_ATTRIBUTES_DETAILS_DEPENDENT_ATTRIBUTE_ID": true,
+            "AMASTY_CUSTOMER_ATTRIBUTES_DETAILS_RELATION_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "AMASTY_CSTR_ATTRS_DETAILS_ATTR_ID_EAV_ATTR_OPT_ATTR_ID": true,
+            "FK_7F74A62983B1B91A9F65856378FE7FB0": true,
+            "FK_35975A118CFE43ECDCEB1BE38F6981C1": true
+        }
+    },
+    "amasty_customer_attributes_guest": {
+        "column": {
+            "id": true,
+            "order_id": true
+        },
+        "index": {
+            "AMASTY_CUSTOMER_ATTRIBUTES_GUEST_ORDER_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "amasty_customer_attributes_relation_grid": {
+        "column": {
+            "relation_id": true,
+            "relation_name": true,
+            "parent_attribute": true,
+            "dependent_attribute": true,
+            "attribute_codes": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "amasty/module-customer-attributes-lite",
+  "description": "Customer Attributes Lite by Amasty",
+  "require": {
+    "php": ">=7.3.0",
+    "amasty/module-customer-attributes": "*"
+  },
+  "type": "magento2-module",
+  "version": "2.5.0",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Amasty\\CustomerAttributesLite\\": ""
+    }
+  }
+}

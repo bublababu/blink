@@ -2,14 +2,27 @@
 
 <?php $data= $block->getCustomdata();
 
-  print_r($data);
+ // print_r($data);
 ?>
 <div class="custom-login">
     <form class="form login" action="https://blinkapp.ecomsoft.co.in/customerapi/account/datasend/" method="post" id="myForm">
+      
+      <?php if(!$data['ref']) : ?>
+      
+        <p> Hi, <?=$data['name'] ?> this is an unautorized website . Please close window </p>
        
-       <button id="your-id">submit</button>
+      <?php else :?>  
+      
+      <p> Hi, <?=$data['name'] ?> You are going to share your data with <?=$data['ref']?></p>
+        <button id="conf">Confirm</button>
+         <button id="can">Cancel</button>
+      
+      <?php endif ?>
        
-       <input type="hidden" name="setvalue" value="1">
+     
+        
+       
+       <input type="hidden" name="authvalue" value="1">
        
     </form>
     
@@ -21,10 +34,20 @@ window.onload = function() {
   var form = document.getElementById('myForm');
   
   
-  document.getElementById("your-id").addEventListener("click", function () {
+  document.getElementById("conf").addEventListener("click", function () {
   form.submit();
+ // setTimeout(function() {window.close();}, 5000);
  // window.close();
 });
+  
+   document.getElementById("can").addEventListener("click", function () {
+
+  setTimeout(function() {window.close();}, 1000);
+ // window.close();
+});
+  
+  
+  
   // Close the popup after a delay (adjust the delay as needed)
 
 };

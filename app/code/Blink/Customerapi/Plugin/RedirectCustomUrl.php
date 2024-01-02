@@ -19,12 +19,21 @@ protected $request;
         $result, )
     {
    //  echo 'asdsa00'.   $data = $this->getRequest()->getParam('client_id');
-     $data=1;
-      $result="customer/account/dashboard";
-        if ($data!='')
+   
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $customerSession = $objectManager->create('Magento\Customer\Model\Session');
+        
+        
+      $clientId= $customerSession->getMyValue(); 
+    
+        if ($clientId!='')
         {
         $customUrl = 'customerapi/account/customlogin/';
         $result->setPath($customUrl);
+        }
+        else {
+             $customUrl = 'customer/account/dashboard/';
+             $result->setPath($customUrl);
         }
         return $result;
     }

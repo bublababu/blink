@@ -28,16 +28,24 @@ class CustomLogin extends AbstractAccount
       /////////////// get data based on client ID /////
             $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
             $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+             $customerSession = $objectManager->create('Magento\Customer\Model\Session');
+             if($customerSession->getMyValue()=='' ) {  $customerSession->setMyValue($data);  $customerSession->setMyTransId($this->getRequest()->getParam('response_code')); }
+             
             $connection = $resource->getConnection();
             $tableOauth = $resource->getTableName('oauth_consumer');
             $tableIntegration = $resource->getTableName('integration');
-     $sql = "SELECT endpoint FROM " . $tableOauth ." , " . $tableIntegration. " WHERE ". $tableOauth.".entity_id=".$tableIntegration.".consumer_id  AND " . $tableOauth.".key='".$data."'";
+     $sql = "SELECT endpoint FROM " . $tableOauth ." , " . $tableIntegration. " WHERE ". $tableOauth.".entity_id=".$tableIntegration.".consumer_id  AND " . $tableOauth.".key='".$data."'  AND ". $tableIntegration.".status=1";
       
-      $result=array();
-    
-       $result['callback'] = $connection->fetchOne($sql);
+        $result=array();
+        
+        $result['callback'] = $connection->fetchOne($sql);
         $result['client']=$data;
-         $result['ref']=0;
+        $result['ref']=0;
+        
+        $customerData = $customerSession->getCustomer()->getData(); //get all data of customerData
+        
+        //print_r($customerData);
+        $result['name']=$customerData['firstname'] . ' ' . $customerData['lastname'] ; 
          
         // print_r($result);
         

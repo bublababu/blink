@@ -1,0 +1,31 @@
+<?php  //$block \Blink\Customerapi\Block\Login ?>
+
+<?php $data= $block->getCustomdata();
+
+  print_r($data);
+?>
+<div class="custom-login">
+    <form class="form login" action="https://blinkapp.ecomsoft.co.in/customerapi/account/datasend/" method="post" id="myForm">
+       
+       <button id="your-id">submit</button>
+       
+       <input type="hidden" name="setvalue" value="1">
+       
+    </form>
+    
+</div>
+
+<script>
+// Automatically submit the form when the window loads
+window.onload = function() {
+  var form = document.getElementById('myForm');
+  
+  
+  document.getElementById("your-id").addEventListener("click", function () {
+  form.submit();
+ // window.close();
+});
+  // Close the popup after a delay (adjust the delay as needed)
+
+};
+</script>

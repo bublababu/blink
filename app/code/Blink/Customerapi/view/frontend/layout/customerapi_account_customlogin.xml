@@ -1,0 +1,9 @@
+<!-- Vendor/Module/view/frontend/layout/customer_account_login.xml -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+           
+            <block class="Blink\Customerapi\Block\Login" name="customer.auth.container" template="Blink_Customerapi::form/login.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

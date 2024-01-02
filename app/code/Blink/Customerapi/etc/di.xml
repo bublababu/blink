@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Customer\Controller\Account\Login" type="Blink\Customerapi\Controller\Account\Login" />
+    
+    
+     <type name="\Magento\Customer\Controller\Account\LoginPost">
+        <plugin name="redirect_custom_url" type="\Blink\Customerapi\Plugin\RedirectCustomUrl" sortOrder="1"/>
+    </type>
+</config>

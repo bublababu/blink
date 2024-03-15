@@ -29,7 +29,13 @@ class CustomLogin extends AbstractAccount
             $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
             $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
              $customerSession = $objectManager->create('Magento\Customer\Model\Session');
-             if($customerSession->getMyValue()=='' ) {  $customerSession->setMyValue($data);  $customerSession->setMyTransId($this->getRequest()->getParam('response_code')); }
+             if($customerSession->getMyValue()=='' ) {  $customerSession->setMyValue($data);
+            $customerSession->setMyTransId($this->getRequest()->getParam('response_code'));
+            
+            
+          //  $this->getRequest()->getParam('response_code') ; exit;
+             
+             }
              
             $connection = $resource->getConnection();
             $tableOauth = $resource->getTableName('oauth_consumer');
@@ -62,7 +68,7 @@ class CustomLogin extends AbstractAccount
        $resultPage=$this->resultFactory->create(ResultFactory::TYPE_PAGE);
        $this->blockdata->setColl($result);
         
-        $resultPage->getConfig()->getTitle()->set(__('Autorization'));
+        $resultPage->getConfig()->getTitle()->set(__('Authorization'));
         return $resultPage;
     }
     

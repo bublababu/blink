@@ -1,0 +1,40 @@
+<?php  //$block \Blink\Customerapi\Block\Login ?>
+
+<?php $data= $block->getApidata();
+
+ $qr=$block->generateQrCode($data[0]['identity_link_url']);
+?>
+<div class="vendor-dashboard-api">
+	<table>
+		<tbody>
+			<?php if(!count($data)):?>
+			<tr>
+				<td colspan="2">No Active API found . Request a <a href="">callback</a>.</td>
+			</tr>
+			<?php else :?>
+		
+			<tr>
+				<td>Api Key:</td>
+				<?php if ($data[0]['status']!==1) :?>
+				 <td><label class="inactive"><?=$data[0]['key']?></label><button type="button" class="action primary inactive">Inactive</button></td>
+				<?php else :?>
+				   <td><label><?=$data[0]['key']?></label><button type="button" class="action primary">Copy</button></td>
+				 <?php endif ?>  
+			</tr>
+			<tr>
+				<td>Callback Url:</td>
+				<td><input type="text" class="input-text" value="<?=$data[0]['endpoint']?>" /></td>
+			</tr>
+			<tr>
+				<td>QR Code:</td>
+				<td>
+					<img src="<?php echo $this->getUrl('media/qr/img/').$qr ?>" alt="" /><button type="button" class="action primary">Print</button></td>
+			</tr>
+			<tr>
+				<td>QR Callback Url:</td>
+				<td><input type="text" class="input-text" value="<?=$data[0]['identity_link_url']?>" /></td>
+			</tr>
+			<?php endif ?>
+		</tbody>
+	</table>
+</div>

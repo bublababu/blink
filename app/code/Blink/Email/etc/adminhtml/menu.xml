@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    <add id="Blink_Email::Emails" title="Email" module="Blink_Email" sortOrder="30" resource="Blink_Email::Emails"/>
+
+    <add id="Blink_Email::email" title="Email Manager" module="Blink_Email" sortOrder="10" parent="Blink_Email::Emails" resource="Blink_Email::email_email"/>
+		
+    <add id="Blink_Email::banner_banner" title="Manage Email" module="Blink_Email" sortOrder="10" parent="Blink_Email::email" action="email/email" resource="Blink_Email::email_email"/>
+    </menu>
+</config>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Blink\Customerapi\Block\Customergroup\Link" name="customer-account-navigation-new-link1" after="-">
+                <arguments>
+                    <argument name="label" xsi:type="string">Shared Websites</argument>
+                    <argument name="path" xsi:type="string">customergen/shared/index</argument>
+                </arguments>
+            </block>
+          
+             <block class="Blink\Customerapi\Block\Customergroup\Link" name="customer-account-navigation-new-link190" after="-">
+                <arguments>
+                    <argument name="label" xsi:type="string">MyQR</argument>
+                    <argument name="path" xsi:type="string">customergen/shared/qr</argument>
+                </arguments>
+            </block>
+            
+            
+             <block class="Blink\Customerapi\Block\Customergroup\Ecomlink" name="customer-account-navigation-new-link8" after="customer-account-navigation-new-link4">
+                <arguments>
+                   <argument name="label" xsi:type="string" translate="true">Subscribers</argument>
+                    <argument name="path" xsi:type="string">customerecom/account/index</argument>
+                </arguments>
+            </block>
+             <block class="Blink\Customerapi\Block\Customergroup\Ecomlink" name="customer-account-navigation-new-link6" after="customer-account-navigation-new-link3">
+                <arguments>
+                   <argument name="label" xsi:type="string" translate="true">Orders</argument>
+                    <argument name="path" xsi:type="string">sales/order/history</argument>
+                </arguments>
+            </block>
+             
+               <block class="Blink\Customerapi\Block\Customergroup\Ecomlink" name="customer-account-navigation-new-link7" after="customer-account-navigation-new-link6">
+                <arguments>
+                   <argument name="label" xsi:type="string" translate="true">My Active Plan</argument>
+                    <argument name="path" xsi:type="string">customerecom/account/plan</argument>
+                </arguments>
+            </block>
+               
+                <block class="Blink\Customerapi\Block\Customergroup\Ecomlink" name="customer-account-navigation-new-link9" after="customer-account-navigation-new-link6">
+                <arguments>
+                   <argument name="label" xsi:type="string" translate="true">My Reports</argument>
+                    <argument name="path" xsi:type="string">customerecom/account/report</argument>
+                </arguments>
+            </block>
+               
+            <block class="Blink\Customerapi\Block\Customergroup\Ecomlink" name="customer-account-navigation-new-link5" after="customer-account-navigation-new-link4">
+                <arguments>
+                   <argument name="label" xsi:type="string" translate="true">Api</argument>
+                    <argument name="path" xsi:type="string">customerecom/account/api</argument>
+                </arguments>
+            </block>
+         <!--   <block class="Blink\Customerapi\Block\Customergroup\Ecomlink" name="customer-account-navigation-new-link4" after="customer-account-navigation-new-link1">
+                <arguments>
+                   <argument name="label" xsi:type="string" translate="true">My Saved Cards</argument>
+                    <argument name="path" xsi:type="string">amstripe/customer/cards</argument>
+                </arguments>
+            </block>-->
+        </referenceBlock>
+    </body>
+</page>

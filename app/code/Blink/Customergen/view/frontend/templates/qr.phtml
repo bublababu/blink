@@ -1,0 +1,16 @@
+<?php 
+ $qr=$block->generateQrCode();
+?>
+<div class="vendor-dashboard-vendcustlist">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<img src="<?php echo $this->getUrl('media/qr/customer/').$qr ?>" alt="" /></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+	
+</div>

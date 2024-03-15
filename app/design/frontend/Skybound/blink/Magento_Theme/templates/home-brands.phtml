@@ -1,0 +1,70 @@
+
+<div class="affiliate-sect">
+	<marquee><h2 class="page-title">Brands of choice</h2></marquee>
+	<div class="custom-inner-container">
+		<ul class="home-affiliate-slider owl-carousel owl-theme">
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo1.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo2.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo3.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo4.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo5.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo6.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo7.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo8.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo9.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo10.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo11.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo12.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo13.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo14.png'); ?>" alt="" /></a></li>
+			<li><a href="#"><img src="<?php echo $this->getViewFileUrl('images/affiliate-logo15.png'); ?>" alt="" /></a></li>
+		</ul>
+	</div>
+	<marquee direction="right"><h2 class="page-title bottom">Brands of choice</h2></marquee>
+</div>
+
+<div class="store-info">
+	<div class="custom-inner-container">
+		<div class="store-image">
+			<span class="pic1" data-aos="flip-right"><img src="<?php echo $this->getViewFileUrl('images/document.png'); ?>" alt="" /></span>
+			<span class="pic2" data-aos="flip-left"><img src="<?php echo $this->getViewFileUrl('images/cloud.png'); ?>" alt="" /></span>
+		</div>
+		<h2 class="page-title" data-aos="fade-right">Store your informations safely and securely</h2>
+		<p data-aos="fade-left">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+		<a href="<?php echo $this->getUrl('customer/account/create') ?>" class="btn-large action primary" data-aos="fade-down">View More</a>
+		
+	</div>
+</div>
+	
+<script type="text/javascript">
+    require(['jquery', 'bannersliderLib'],function($){
+        $(function() {
+            $('.home-affiliate-slider').owlCarousel({
+                items:3,
+                nav:true,
+                autoplay: true,
+                autoplayTimeout:5000,
+                slideSpeed: 700,
+                paginationSpeed: 500,
+                loop:true,
+                dots:false,
+                lazyFollow:true,
+                autoHeight: true,
+                slideBy: 1,
+                margin: 50,
+                navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+				responsive:{
+					0:{
+						items:2
+					},
+					500:{
+						items:3
+					},
+					1025:{
+						items:3
+					}
+				}
+            });
+        });
+    });
+</script> 

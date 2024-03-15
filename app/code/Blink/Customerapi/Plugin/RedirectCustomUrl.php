@@ -32,7 +32,7 @@ protected $request;
         $result->setPath($customUrl);
         }
         else {
-             $customUrl = 'customer/account/dashboard/';
+             $customUrl = 'customer/account/';
              $result->setPath($customUrl);
         }
         return $result;

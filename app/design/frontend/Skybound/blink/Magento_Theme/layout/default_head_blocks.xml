@@ -12,6 +12,17 @@
         <script src="requirejs/require.js"/>
         <css src="css/custom.css"/>
         <css src="css/font-awesome.css"/>
+        
+        <css src="animate-css/animate.min.css"/>
+        <css src="animate-css/animate.compat.css"/>
+        <css src="animate-css/animate.css"/>
+        <css src="js/aos.css"/>
+        
+        <css src="css/owl.carousel.min.css"/>
+       <!-- <script src="js/jquery.min.js"></script>-->
+        
+    <!--    <script src="js/aos.js"></script>-->
+        
     </head>
     <body>
         <referenceBlock name="head.additional">

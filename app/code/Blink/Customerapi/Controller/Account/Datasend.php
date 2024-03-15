@@ -21,7 +21,7 @@ class Datasend extends AbstractAccount
     public function execute()
     { 
      $post = $this->getRequest()->getPost();
-      echo 'Please wait , do not close window.....';
+     // echo 'Please wait , do not close window.....';
      
      
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
@@ -30,7 +30,7 @@ class Datasend extends AbstractAccount
         $connection = $resource->getConnection();
         $tableOauth = $resource->getTableName('oauth_consumer');
         $tableIntegration = $resource->getTableName('integration');
-         $clientId= $customerSession->getMyValue();
+        $clientId= $customerSession->getMyValue();
          $transId=$customerSession->getMyTransId();
         $sql = "SELECT endpoint FROM " . $tableOauth ." , " . $tableIntegration. " WHERE ". $tableOauth.".entity_id=".$tableIntegration.".consumer_id  AND " . $tableOauth.".key='".$clientId."' AND ". $tableIntegration.".status=1" ;
         
@@ -40,19 +40,49 @@ class Datasend extends AbstractAccount
       
         
         $customerData = $customerSession->getCustomer()->getData(); //get all data of customerData
+       
+         $customerId = $customerData['entity_id'];
+         $customerObj = $objectManager->create('Magento\Customer\Model\Customer')->load($customerId);
+         $customerAddress = array();
+         
+         foreach ($customerObj->getAddresses() as $address)
+            {
+                $customerAddress[] = $address->toArray();
+            }
+            
+           foreach ($customerAddress as $customerAddres) {
+
+               $result['country_id']=$customerAddres['country_id'];
+               $result['city']= $customerAddres['city'];
+              $result['postcode']= $customerAddres['postcode'];
+              $result['region']= $customerAddres['region'];
+              $result['street']= $customerAddres['street'];
+              $result['telephone']= $customerAddres['telephone'];
+          }
         
-        //print_r($customerData);
-        $result['name']=$customerData['firstname'] . ' ' . $customerData['lastname'] ; 
+        
+        
+       // print_r($customerData); exit;
+        $result['fname']=$customerData['firstname'];  $result['lname']= $customerData['lastname'] ; 
                
             // Sample JSON data to be sent
                         $data = [
-                            'name' => $result['name'],
-                            'email' => $customerData['email'],
+                            'fname' => $result['fname'],
+                            'lname' => $result['lname'],
+                            'email' => $customerData['shared_email'],
+                            'country_id' => $result['country_id'],
+                            'postcode' => $result['postcode'],
+                            'region' => $result['region'],
+                            'street' => $result['street'],
+                            'telephone' => $result['telephone'],
+                            'city' => $result['city'],
                             'response_code' =>$transId
                         ];
                         
                         // Encode data to JSON format
                         $jsonData = json_encode($data);
+                        
+                      //  echo $jsonData;
                         
                         // URL to send the JSON data
                            $url =$result['callback'];
@@ -94,7 +124,7 @@ class Datasend extends AbstractAccount
                         // Close cURL session
                         curl_close($ch);
                              
-     
+      echo 'Please wait , do not close window.....Your transsaction reference id #'. $transId ;
      $customerSession->setMyValue('');
      $customerSession->setMyTransId('');
      
@@ -106,7 +136,7 @@ class Datasend extends AbstractAccount
 // Automatically submit the form when the window loads
 window.onload = function() {
     
-  setTimeout(function() {window.close();}, 3000);
+ setTimeout(function() {window.close();}, 5000);
  // window.close();
 
 

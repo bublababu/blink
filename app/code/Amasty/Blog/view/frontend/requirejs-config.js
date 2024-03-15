@@ -8,7 +8,8 @@ var config = {
             amBlogTabs: 'Amasty_Blog/js/tabs',
             amBlogViewsList: 'Amasty_Blog/js/posts-lists-counter-update',
             amBlogSearch: 'Amasty_Blog/js/blog-live-search',
-            amBlogScrollTabs: 'Amasty_Blog/js/blog-scroll-tabs'
+            amBlogScrollTabs: 'Amasty_Blog/js/blog-scroll-tabs',
+             bannersliderLib: 'Amasty_Blog/js/owl.carousel.min',
         }
     },
     paths: {
@@ -17,6 +18,9 @@ var config = {
     shim: {
         amBlogSlick: {
             deps: [ 'jquery' ]
+        },
+        'bannersliderLib': {
+            deps: ['jquery']
         }
     }
 };

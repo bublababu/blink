@@ -14,9 +14,9 @@ if($this->getConfig('customers_submit')){
 ?>
 <div class="testimonial-container">
 	<?php if($show_submit): ?>
-		<a class="button-o action submit primary" data-toggle="modal" href="<?php echo $urlsubmit; ?>">
-			<span><?php echo __('Add New Testimonial') ?></span>
-		</a>
+		<!--<a class="button-o action submit primary" data-toggle="modal" href="<?php echo $urlsubmit; ?>">
+			<span><?php //echo __('Add New Testimonial') ?></span>
+		</a>-->
 	<?php endif;?>
 	<?php  
 	$testimonials = $this->getCollection(); 
@@ -24,30 +24,32 @@ if($this->getConfig('customers_submit')){
 		$mediaUrl = $this->getMediabaseUrl();
 	?>
 	<div class="magiccart-testimonials magiccart-testimonials-grid">
-		<?php foreach ($testimonials as $testimonial): ?> 
-			<div class="magiccart-testimonials-grid-left">
-				<img src="<?php echo $mediaUrl . $testimonial->getData('image');?>" alt="<?php echo __($testimonial->getData('name')); ?>" width="100" height="100" />
-			</div>
-			<div class="magiccart-testimonials-grid-right">
-				<div class="magiccart-testimonial-author">
-					<span><?php echo __($testimonial->getData('name'));?></span>
+		<?php foreach ($testimonials as $testimonial): ?>
+			<div class="magiccart-testimonials-gridbox">
+				<div class="magiccart-testimonials-grid-left">
+					<img src="<?php echo $mediaUrl . $testimonial->getData('image');?>" alt="<?php echo __($testimonial->getData('name')); ?>" width="100" height="100" />
 				</div>
-				<div class="magiccart-testimonial-rating">
-					<div class="rating-result">
-						<div class="field-summary_rating">
-							<span class="rating-box" style="display:block;">
-								<span style="display:block; width:<?php echo $testimonial->getData('rating_summary')*20; ?>%;" class="rating"></span>
-							</span>
+				<div class="magiccart-testimonials-grid-right">
+					<div class="magiccart-testimonial-author">
+						<span><?php echo __($testimonial->getData('name'));?></span>
+					</div>
+					<div class="magiccart-testimonial-rating">
+						<div class="rating-result">
+							<div class="field-summary_rating">
+								<span class="rating-box" style="display:block;">
+									<span style="display:block; width:<?php echo $testimonial->getData('rating_summary')*20; ?>%;" class="rating"></span>
+								</span>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="magiccart-testimonial-content">
-					<?php echo __($testimonial->getData('text')); ?>
-				</div>
-				<div class="magiccart-testimonial-jobandcompany">
-					<span><?php echo __($testimonial->getData('job'))?></span>
-					<span>/</span>
-					<span><?php echo __($testimonial->getData('company'))?></span>
+					<div class="magiccart-testimonial-content">
+						<?php echo __($testimonial->getData('text')); ?>
+					</div>
+					<div class="magiccart-testimonial-jobandcompany">
+						<span><?php echo __($testimonial->getData('job'))?></span>
+						<span>/</span>
+						<span><?php echo __($testimonial->getData('company'))?></span>
+					</div>
 				</div>
 			</div>
 		<?php endforeach; ?>

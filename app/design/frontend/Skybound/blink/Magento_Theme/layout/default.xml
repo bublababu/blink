@@ -29,11 +29,28 @@
        <!--  <referenceBlock name="minicart" remove="true"/>-->
         
           
-        <referenceContainer name="header-wrapper">
+        <!--<referenceContainer name="header-wrapper">
             <block class="Magento\Framework\View\Element\Template" name="header.promotion.block.one" template="Magento_Theme::html/contact-block.phtml" after="logo"/>
            
-        </referenceContainer>
-   
+        </referenceContainer>-->
+        
+        <referenceBlock name="register-link">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">Sign Up</argument>
+            </arguments>
+        </referenceBlock>
+        
+        <move element="contact-us-link" destination="footer_links" after="custom-footer-link-about" />
+      
+        <referenceBlock name="footer_links">
+         <block class="Magento\Framework\View\Element\Html\Link" name="custom-footer-link-about">
+             <arguments>
+                 <argument name="label" xsi:type="string">About Us</argument>
+                 <argument name="path" xsi:type="string">about</argument>
+             </arguments>
+         </block>
+        </referenceBlock>
+        
           
     </body>
 </page>
